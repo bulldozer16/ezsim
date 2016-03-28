@@ -1,0 +1,31 @@
+inicio
+AND	R0,R1,R5
+B	medio
+ADD	R0, R0, R1
+EOR	R1, R0, #0x20
+SUBSEQ	R1, R1, #10
+RSB	R2, R0, #69
+ANDHS	R3, R2, R1
+ADC	R1, R3, R4, LSL #30
+SBC	R4, R1, #0x69
+RSC	R9, R4, #114
+CMN	R0, R1
+CMP	R9, #0x96
+medio
+AND	R9, R9, #0xFF
+MOV	R8, #0x69
+LSL	R9, R9, #3
+ASR	R8, R8, #1
+ROR	R8, R8, #31
+BIC	R7, R8, #0x0F
+MVN	R5, #0x9
+
+MOV	R5, #0x400
+STR	R7, [R5, #8]
+STR	R9, [R2, -R5]!
+STR	R8, [R2], #0
+LDRB	R1, [R5, #8]
+fin
+EOR	R1, R0, #0x20
+
+

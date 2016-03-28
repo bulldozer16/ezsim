@@ -1,0 +1,3 @@
+MOV		R1, #0xD9
+MOV		R0, #0x400
+STRB		R1, [R0], #3

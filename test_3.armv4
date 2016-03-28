@@ -1,0 +1,35 @@
+	MOV		R0, #0x400	
+	MOV		R1, #0xF0
+	MOV		R8, #0xFF
+	STR		R8, [R0, #4]
+	MOV		R9, #23
+	STR		R9, [R0, #8]	
+	STRB		R1, [R0, #0x0]	
+	MOV		R3, #0x400
+	ADD		R3, R3, #36	
+	MOV		R4, #0x0	
+	MOV		R5, #0x0	
+	MOV		R6, #0x1	
+	
+espera
+	LDRB	R2, [R0, #0x04]		
+	CMP 	R2, #0xFF		
+	BNE	espera			
+	
+	LDR	R2, [R0, #0x08]		
+	CMP	R2, #0x0		
+	BEQ	fin			
+
+fibonacci
+	STR	R5, [R3, #0x0]		
+	ADD	R7, R6, R5		
+	MOV	R5, R6			
+	MOV	R6, R7			
+	ADD	R3, R3, #0x4		
+	ADD	R4, R4, #0x1		
+	CMP	R4, R2			
+	BNE	fibonacci		
+
+fin
+	MOV	R1, #0x11		
+	STR	R1, [R0, #0x0]		
